@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container" style="width: 500px">
+    <div class="page-header">
+        <h2>Register</h2>
+    </div>
+        <form action="" class="form-group" method="post">
+            {{ form.csrf_token }}
+            {{ form.email.label }} {{ form.email(class='form-control') }}
+            {{ form.username.label }} {{ form.username(class='form-control') }}
+            {{ form.password.label }} {{ form.password(class='form-control') }}
+            {{ form.re_password.label }} {{ form.re_password(class='form-control') }}
+            <br>
+            {{ form.submit(class='btn btn-success') }}
+        </form>
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

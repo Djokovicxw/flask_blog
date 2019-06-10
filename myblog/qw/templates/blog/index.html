@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="row">
+        <div class="container">
+            <div class="col-md-3">
+                <div class="thumbnail">
+                  <img src="{{ url_for('static', filename='IMG_0002.JPG') }}">
+                  <div class="caption text-center">
+                    <h3 class="text-center">qw</h3>
+                      <p><small>世界上有10种人，<br>一种懂二进制，一种不懂。</small></p>
+                    <p>Github:<a href="https://github.com/Djokovicxw"> Djokovicxw</a> </p>
+                    <p>Mail:<a href="mailto:qw112657@gmail.com"> qw112657@gmail.com</a></p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+            {% for article in articles %}
+                    <div class="media">
+                    <div class="media-left">
+                        <img src="{{ url_for('static', filename='IMG_0002.JPG') }}" class="media-object" style="width: 50px" alt="Loading">
+                    </div>
+                    <div class="media-body">
+                      <div class="panel panel-info  ">
+                          <div class="panel-heading">
+                              {{ article.title }}
+                          </div>
+                          <div class="panel-body">
+
+                              {{ article.content }}
+                          </div>
+                          <div class="panel-footer">
+                              at {{ article.created_time }}
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+            {%  endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        let content = document.getElementsByClassName("panel-body");
+        for (let i = 0; i < content.length; i++){
+	        content[i].innerHTML = marked(content[i].textContent.trim());
+        }
+    </script>
+{% endblock %}
