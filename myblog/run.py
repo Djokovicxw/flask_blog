@@ -1,4 +1,4 @@
-from qw import create_app
+from myblog.qw import create_app
 
 app = create_app()
 

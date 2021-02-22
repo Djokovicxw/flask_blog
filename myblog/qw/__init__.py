@@ -1,8 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, config
 from flask_bootstrap import Bootstrap
 from qw.db import init_extension
 from qw.views import blog, auth
-import config
 
 
 def create_app():
